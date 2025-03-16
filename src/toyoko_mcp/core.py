@@ -31,12 +31,11 @@ class Context:
         self.context = context
         self.main_page = main_page
 
-    def close(self) -> None:
+    async def close(self) -> None:
         if self.context is not None:
-            self.context.close()
+            await self.context.close()
         if self.browser is not None:
-            self.browser.close()
-
+            await self.browser.close()
 
 context: Context | None = None
 
