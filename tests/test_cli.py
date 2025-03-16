@@ -83,7 +83,7 @@ async def test_login() -> None:
 @pytest.mark.asyncio  # type: ignore
 async def test_list_region() -> None:
     """
-    Test the list_rergion function.
+    Test the list_region function.
     """
     result = await list_region("list_region", {})
     assert len(result) == 1
