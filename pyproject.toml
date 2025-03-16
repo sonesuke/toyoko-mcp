@@ -1,0 +1,42 @@
+[project]
+name = "toyoko-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mcp[cli]>=1.4.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "bandit>=1.8.3",
+    "docformatter>=1.7.5",
+    "mypy==1.15.0",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.25.3",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff==0.11.0",
+]
+
+[project.scripts]
+cli = "toyoko_mcp.cli:run_main"
+
+[tool.mypy]
+files = ["src", "tests"]
+strict = true
+disable_error_code = ["import-untyped"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.coverage.run]
+concurrency = ["multiprocessing", "thread"]
+omit = ["src/toyoko_mcp/cli.py"]

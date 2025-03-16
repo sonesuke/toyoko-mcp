@@ -1,0 +1,62 @@
+repos:
+  # formatter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.11.0
+    hooks:
+      # Run the linter.
+      - id: ruff
+        types_or: [python, pyi]
+        args: [--fix]
+      # Run the formatter.
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  # mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    # mypy version.
+    rev: v1.15.0
+    hooks:
+      - id: mypy
+        name: mypy
+
+  # bandit - find common security issues
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.8.3
+    hooks:
+      - id: bandit
+        name: bandit
+        exclude: ^tests/
+        args:
+          - -r
+          - src
+
+  # docformatter - formats docstrings to follow PEP 257
+  - repo: https://github.com/pycqa/docformatter
+    # todo: replace when >v1.7.5 will be published
+    rev: 06907d0267368b49b9180eed423fae5697c1e909
+    hooks:
+      - id: docformatter
+        name: docformatter
+        args:
+          [
+            -r,
+            -i,
+            --pre-summary-newline,
+            --make-summary-multi-line,
+            --wrap-summaries,
+            "90",
+            --wrap-descriptions,
+            "90",
+            src,
+            tests,
+          ]
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: uv run pytest tests --cov=src
+        language: system
+        types: [python]
+        pass_filenames: false
