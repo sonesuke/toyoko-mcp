@@ -37,6 +37,7 @@ class Context:
         if self.browser is not None:
             await self.browser.close()
 
+
 context: Context | None = None
 
 
@@ -57,7 +58,7 @@ async def shutdown_playwright() -> None:
     """
     global context
     if context is not None:
-        context.close()
+        await context.close()
     global playwright
     if playwright is not None:
         await playwright.stop()
