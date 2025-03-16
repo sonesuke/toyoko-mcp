@@ -277,8 +277,7 @@ async def is_available_room(
     hotel = page.locator("#sel_htl")
     if hotel is None:
         raise ValueError("Element with Id '#sel_htl' not found.")
-    hotel.select_option(hotel_id)
-
+    await hotel.select_option(hotel_id)
     nights = arguments.get("nights")
     if nights is None:
         raise ValueError("Argument 'nights' is required.")
