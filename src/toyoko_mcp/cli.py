@@ -12,6 +12,7 @@ async def main() -> None:
     finally:
         await shutdown_playwright()
 
+
 # pragma: no cover
 def run_main() -> None:
     asyncio.run(main())
