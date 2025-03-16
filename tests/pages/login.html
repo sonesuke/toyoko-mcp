@@ -274,7 +274,7 @@ left: 0px;
         <div class="page-header">
           <h2 class="text-center text-primary">ユーザーIDをお持ちの方</h2>
         </div>
-        <form id="lgn_form" role="form" data-toggle="validator" method="post" action="/Auth/index/" novalidate="true">
+        <form id="lgn_form" role="form" data-toggle="validator" method="post" action="search.html" novalidate="true"></form>
           
 <input type="hidden" name="login_mode" value="0">
           
@@ -284,7 +284,7 @@ left: 0px;
 </div></div>						<div class="form-group"><div class="clearfix"><label for="passwd">ユーザーパスワード</label><input type="password" name="passwd" value="" id="passwd" class="form-control">
 </div></div>													<input type="hidden" name="grp_saves" value="0" id="saves_hddn" class="form-control">
             <div class="checkbox"><label><input type="checkbox" name="grp_saves" value="1" id="grp_saves">
-法人ID、ユーザーID、ユーザーパスワードを保存する <span class="fontS text-danger">※共用のパソコンではチェックを外してください。</span></label></div>												<button type="submit" class="btn btn-lg btn-blue">ログイン</button>
+法人ID、ユーザーID、ユーザーパスワードを保存する <span class="fontS text-danger">※共用のパソコンではチェックを外してください。</span></label></div>												<button type="submit" class="btn btn-lg btn-blue" onclick="location.href='search.html'">ログイン</button>
         </form>
         <p class="text-center"><a href="/Auth/login_remind/userid" class="link">ユーザーIDを忘れた方はこちら</a></p>
         <p class="text-center"><a href="/Auth/login_remind/passwd" class="link">パスワードを忘れた方はこちら</a></p>

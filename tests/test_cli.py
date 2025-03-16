@@ -1,11 +1,15 @@
 from typing import AsyncGenerator
 import os
+import re
 from pathlib import Path
 from urllib.parse import quote
 
 import pytest
 from pytest_asyncio import fixture  # Import fixture from pytest-asyncio
 from toyoko_mcp.core import (
+    is_available_room,
+    list_hotel,
+    list_region,
     list_tools,
     login,
     initialize_playwright,
@@ -62,7 +66,7 @@ async def test_list_tools() -> None:
     Test the list_tools function.
     """
     result = await list_tools()
-    assert len(result) == 1
+    assert len(result) == 4
 
 
 @pytest.mark.asyncio  # type: ignore
@@ -74,3 +78,45 @@ async def test_login() -> None:
     assert len(result) == 1
     assert result[0].type == "text"
     assert result[0].text == "Login successfully"
+
+
+@pytest.mark.asyncio  # type: ignore
+async def test_list_region() -> None:
+    """
+    Test the list_region function.
+    """
+    result = await list_region("list_region", {})
+    assert len(result) == 1
+    assert result[0].type == "text"
+    assert re.search("品川周辺", result[0].text)
+
+
+@pytest.mark.asyncio  # type: ignore
+async def test_list_hotel() -> None:
+    """
+    Test the list_hotel function.
+    """
+    result = await list_hotel("list_hotel", {"region_id": "79"})
+    assert len(result) == 1
+    assert result[0].type == "text"
+    assert re.search("天王洲アイル", result[0].text)
+
+
+@pytest.mark.asyncio  # type: ignore
+async def test_list_room() -> None:
+    """
+    Test the list_room function.
+    """
+    result = await is_available_room(
+        "list_hotel",
+        {
+            "region_id": "79",
+            "hotel_id": "00244",
+            "month": 3,
+            "day": 1,
+            "nights": 1,
+        },
+    )
+    assert len(result) == 1
+    assert result[0].type == "text"
+    assert re.search("Rooms available", result[0].text)

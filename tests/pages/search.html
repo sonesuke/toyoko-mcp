@@ -1,0 +1,984 @@
+<html lang="ja"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="robots" content="noindex, nofollow, noarchive"><!-- 検索エンジンにクロールさせない -->
+
+<!-- 変更 #32247 START -->
+<!-- Google tag (gtag.js) -->
+<script type="text/javascript" async="" charset="utf-8" src="https://chat3-66.chatdealer.jp:443/chat/client.js?1742110174226"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M5KR7Q2J"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-33NCWFH7DL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33NCWFH7DL');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M5KR7Q2J');</script>
+<!-- End Google Tag Manager -->
+<!-- 変更 #32247 END -->
+
+    <link rel="icon" href="/favicon.ico">
+
+    <title>ホテル検索・宿泊予約</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css?ver=0020">
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css?ver=0020">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" href="/assets/css/ie10-viewport-bug-workaround.css?ver=0020">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css?ver=0020">
+    <link rel="stylesheet" href="/assets/datepicker/css/bootstrap-datepicker3.min.css?ver=0020">
+    <link rel="stylesheet" href="/assets/swiper/css/swiper.min.css?ver=0020"><!-- shop.htmlのCSS -->
+    <link rel="stylesheet" href="/css/style.css?ver=0018">
+    <!-- Bootstrap core JavaScript -->
+    <script src="/js/jquery-2.1.1.min.js?ver=0020"></script>
+    <script src="/js/jquery.mask.min.js?ver=0020"></script>
+    <script src="/js/bootstrap.js?ver=0020"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/assets/js/ie10-viewport-bug-workaround.js?ver=0020"></script>
+    <script src="/js/validator.js?ver=0020"></script>
+    <script src="/assets/datepicker/js/bootstrap-datepicker.min.js?ver=0020"></script>
+    <script src="/assets/datepicker/js/bootstrap-datepicker.ja.js?ver=0020"></script>
+    <script src="/assets/swiper/js/swiper.min.js?ver=0020"></script><!-- shop.htmlのJavaScript -->
+    <script src="/js/basic.js?ver=0018"></script>
+    <script src="/js/toyoko.js?ver=0018"></script>
+    <script src="/js/agh.sprintf.js?ver=0018"></script>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-orange.js?ver=0020"></script><![endif]-->
+    <script src="/assets/js/ie-emulation-modes-warning.js?ver=0020"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js?ver=0020"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js?ver=0020"></script>
+<![endif]-->
+
+</head>
+
+<body class="search search-result logged-in" onload="body_onload()" data-pw-cursor="pointer">
+
+<!-- 変更 #32247 START -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5KR7Q2J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- 変更 #32247 END -->
+
+    <header id="header">
+        <div class="header-01">
+            <div class="container clearfix">
+                        <div class="login-info">
+                    <div id="lgn_user_1">株式会社XXXXX <br class="hidden-sm hidden-md hidden-lg">株式会社XXXXX XXXXX 様<a href="/auth/logout">ログアウト</a></div>
+                </div>
+                                <div class="functionArea">
+                    <form id="ntnltyForm1" name="ntnltyForm" action="/Search/condition">
+                        <div class="selectLang">
+                            <label class="btn-arrow btn-arrow-bottom">
+                                <select id="slct_lngg" name="lcl_id" class="stctLngg" onchange="if($(this).val() != '0' &amp;&amp; $(this).val() != 'ja') $('#ntnltyForm1').submit();">
+<option value="0" selected="selected">Language</option>
+<option value="ja">日本語</option>
+<option value="en">English</option>
+<option value="ko">한국어</option>
+</select>
+                            </label>
+                        </div>
+                    </form>
+                    <div class="selectFontsize">
+                        <p>文字サイズ</p>
+                        <ul class="active">
+                            <li class="middle current">中</li>
+                            <li class="large ">大</li>
+                        </ul>
+                    </div>
+                    <!-- /functionArea -->
+                </div>
+            </div>
+        </div>
+        <div class="header-02 bg-primary">
+            <div class="container clearfix">
+                <div class="logo" style="align-items: baseline;">
+                    <h1><a href="/Search/index/condition"><img src="/images/logo_new.png" alt="toyoko-inn.com東横INN" style="width: auto; height: 60px;"></a></h1>
+                    <div class="wAuto flL"><span>東横INNクラブコーポレートビジネス会員サイト</span>
+                </div>
+                            <div class="hidden-xs hidden-md hidden-lg">XXXXXXX<br class="hidden-sm hidden-md hidden-lg">XXXXXXXXXXXX</div>
+                    </div>
+                <div class="sub-logo">
+                        <ul class="user-menu mr0 hidden-xs hidden-sm visible-md visible-lg active">
+                        <li class="dpBlock alR mb5 submenu_wo_border_hlist"><a href="/Search/hotel_list"><i class="fas fa-list mr5"></i>ホテル一覧</a></li>
+        
+                                                <li class="submenu_wo_border"><a href="/Mymenu/"><i class="fas fa-user-check mr5"></i>マイページ</a></li>
+                                                <li class="submenu_with_border"><a href="/Reservation/index/lists"><i class="far fa-calendar-alt mr5"></i>予約確認・変更・キャンセル</a></li>
+                                        </ul>
+                    </div>
+                        <div id="mobile-head">
+                    <div id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                    </div>
+                            <div class="container hidden-sm hidden-md hidden-lg">XXXX <br class="hidden-sm hidden-md hidden-lg">XXXXXXXXX</div>
+                </div>
+        <div id="headermenu">
+            <div class="container">
+                <nav id="global-nav" class="active">
+                    <form id="ntnltyForm2" name="ntnltyForm" action="/Search/condition">
+                        <div class="selectLang-sp">
+                            <label class="btn-arrow btn-arrow-right">
+                                <select id="slct_lngg" name="lcl_id" class="stctLngg" onchange="if($(this).val() != '0' &amp;&amp; $(this).val() != 'ja') $('#ntnltyForm2').submit();">
+<option value="0">Language</option>
+<option value="ja" selected="selected">日本語</option>
+<option value="en">English</option>
+<option value="ko">한국어</option>
+</select>
+                            </label>
+                        </div>
+                    </form>
+                    <ul class="active">
+                        <div class="login-info-sp">
+                            <ul id="mypage-menu" class="open-mypage bgcl-333 active">
+                                <li><a href="/Mymenu/"><i class="fas fa-user-check mr5"></i>マイページ</a></li>
+                                <li><a href="/Reservation/index/lists"><i class="far fa-calendar-alt mr5"></i>予約確認・変更・キャンセル</a></li>
+                                </ul>
+                        </div>
+                        <li class="search active"><a href="/Search/index/condition">ホテル検索・宿泊予約</a></li>
+                        <li class="news"><a href="/News">新着情報</a></li>
+                        <li class="feature"><a href="/Feature">東横INNの特長</a></li>
+                        <li class="campaign"><a href="/Campaign">キャンペーン・おすすめ</a></li>
+                        <li class="club"><a href="/Support/info">ご利用案内</a></li>
+                        <li class="hidden-md hidden-lg"><a href="/Search/hotel_list"><i class="fas fa-list mr5"></i>ホテル一覧</a></li>
+                        <div class="login-info-sp">
+                            <ul id="mypage-menu" class="open-mypage bgcl-333 active">
+                                <li><a href="/auth/logout">ログアウト</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+<div class="pankuzu_wrap hidden-xs hidden-sm visible-md visible-lg">
+    <div id="pankuzu" class="container">
+<ul id="topicPath" class="active"><li>東横INNコーポレートTOP</li></ul>    </div>
+</div>
+
+    </header><!--/#header-->
+<script>
+//コールバック用のクラスを定義
+var callback = function() {
+	// ホテルList取得
+	this.get_htl_list = function(area_id) {
+		$('#sel_htl option').remove();
+		$('#sel_htl').append($('<option>').attr({value:""}).text("\u30db\u30c6\u30eb\u3092\u9078\u629e"));
+		console
+		var data = post_json('/Ajax/get_htl_list',
+				{'area_id' : area_id,}
+		);
+		data.done(function (ret) {
+			if (ret.val != ""){
+				$('#sel_htl').append(ret.val);
+			}
+			if ($('#sel_htl option').length > 1) {
+				$('#sel_htl').prop('disabled', false);
+			} else {
+				$('#sel_htl').prop('disabled', true);
+			}
+		});
+		data.fail(function(xhr, ajaxOptions, thrownError) {
+			ajax_fail_console(xhr, ajaxOptions, thrownError);
+		});
+	}
+};
+
+//行き先プルダウン変更時の処理
+function onChangePrfcr(value) {
+	var cllbck = new callback();
+	cllbck['get_htl_list'](value);
+	return false;
+}
+
+function check_to_submit_search(num) {
+	if (num == 0){ return false; }
+	var element = document.getElementById("sel_area");
+	if( element.selectedIndex === 0 ) {
+		var msg = "\u30a8\u30ea\u30a2\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
+ 		alert(msg);
+		element.focus();
+	}else{
+		// 「行き先エリア名」をhiddenタグに保存
+		var hiddenArea = document.getElementById("sel_area_txt");
+		hiddenArea.value = element.options[element.selectedIndex].text;
+		if($('#detail_a').attr('aria-expanded') === "true" ) {
+			document.getElementById("sel_dtl_cndtn").value = "on";
+		}else{
+			document.getElementById("sel_dtl_cndtn").value = "";
+		}
+// 		// 「行き先ホテル名」をhiddenタグに保存
+// 		var elementHtl = document.getElementById("sel_htl");
+// 		if( elementHtl.selectedIndex > 0 ) {
+// 			var hiddenHtl = document.getElementById("sel_htl_txt");
+// 			hiddenHtl.value = elementHtl.options[elementHtl.selectedIndex].value;
+// // 			console.log('pos 8 :value ' + elementHtl.options[elementHtl.selectedIndex].value);
+// 		}
+
+		set_hidden_option_value(document,"sel_htl");		//
+
+		$('#prcssng_dvsn').val('dtl');
+		$('#lttd').val('');
+		$('#lngtd').val('');
+		document.search_form.submit();
+		return false;
+	}
+}
+
+function set_hidden_option_value(doc,idkey) {
+	// hiddenタグに保存
+	var elm = doc.getElementById(idkey);
+	if (elm != null){
+		if( elm.selectedIndex > 0 ) {
+			var hddn = doc.getElementById(idkey + "_txt");
+			hddn.value = elm.options[elm.selectedIndex].value;
+		}
+	}
+}
+
+$(function() {
+
+	var nights = function() {
+		var fromDate = $('#datepicker').val() != '' ? new Date($('#datepicker').val()) : new Date();
+		var toDate = new Date('2025-09-16');
+
+		var difftime = toDate.getTime() - fromDate.getTime();
+		var dayDiffTime = difftime / (1000 * 60 * 60 * 24);
+		var dayDiff = Math.floor(dayDiffTime) + 1; //　差分日付から、泊数の最低単位１を加算
+		// 泊数補正　最大泊数（7泊 or 8泊以上）
+		dayDiff = dayDiff > 8 ? 8 : dayDiff;
+
+		// 泊数セレクト値の保証（優先順位　変更前選択値　＞　最大泊数）
+		var slctVal = (dayDiff >= parseInt($('#nights').val())) ? parseInt($('#nights').val()) : dayDiff;
+
+		// 泊数ドロップダウン要素の消去
+		$('#nights').children().remove();
+
+		// 泊数ドロップダウン生成
+		for (var i=0; i < dayDiff; i++) {
+			if ( i === 0 ) {
+				$('#nights').append($('<option value="' + i + '">' + '日帰り</option>'));
+			}
+			if ( i === 7 ) {
+				$('#nights').append($('<option value="' + (i + 1) + '">' + '8泊以上</option>'));
+			} else {
+				$('#nights').append($('<option value="' + (i + 1) + '">' + (i + 1) + '泊</option>'));
+			}
+		}
+		// 泊数セレクト
+		$('#nights').val(slctVal);
+	}
+
+	$('#datepicker').attr('readonly', true);
+
+	// オンロード時に実行
+	nights();
+
+	// 宿泊日変更による、泊数ドロップダウン生成
+	$('#datepicker').change(function() {
+		nights();
+	});
+});
+</script>
+
+<div class="page-title">
+	<div class="page-header">
+		<h1 class="text-center">ホテル検索・宿泊予約</h1>
+	</div>
+</div>
+
+<div class="container theme-showcase" role="main">
+
+	<div class="search-panel">
+		<!-- タブ・メニュー -->
+		<ul class="nav nav-tabs active">
+			<li class="active col-xs-6"><a href="javascript:void(0);"><h2>条件から探す</h2></a></li>
+		</ul>
+
+		<!-- タブ内容 -->
+		<div class="tab-content">
+			<div class="tab-pane active">
+				<h3>検索条件</h3>
+				<div class="row">
+					<form id="search_form" name="search_form" method="post" action="/Search/condition">
+						<input type="hidden" name="phase" value="condition" id="phase">
+						<input type="hidden" name="sel_dtl_cndtn" value="" id="sel_dtl_cndtn">
+						<input type="hidden" name="sel_area_txt" value="" id="sel_area_txt">
+						<input type="hidden" name="sel_htl_txt" value="" id="sel_htl_txt">
+						<input type="hidden" name="lttd" value="" id="lttd">
+						<input type="hidden" name="lngtd" value="" id="lngtd">
+
+						<input type="hidden" name="vcnt_type_txt" value="0" id="vcnt_type_txt">
+						<input type="hidden" name="sort_type_txt" value="3" id="sort_type_txt">
+						<input type="hidden" name="dsply_cnt_txt" value="5" id="dsply_cnt_txt">
+
+						<div class="col-xs-12 col-md-6">
+							<label for="checkin">チェックイン</label>
+							<div class="form-inline form-checkin">
+								<div class="form-group"><input type="text" name="chck_in" value="2025-03-16" id="datepicker" class="form-control form-datepicker" data-date-language="ja" data-date-start-date="'0d'" data-date-end-date="2025-09-16" placeholder="日付を入力" readonly="readonly">
+</div>								<div class="form-group pos_relative"><label for="nights">泊数</label><select id="nights" name="nights" class="form-control">
+
+
+
+
+
+
+
+
+
+<option value="0">日帰り</option><option value="1">1泊</option><option value="2">2泊</option><option value="3">3泊</option><option value="4">4泊</option><option value="5">5泊</option><option value="6">6泊</option><option value="7">7泊</option><option value="8">8泊以上</option></select>
+<div class="condition-dayuse-exp"><a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-content="泊数の選択肢から『日帰り』を選択し、ホテル検索を行ってください。" data-placement="bottom" data-html="true" tabindex="0" data-original-title="" title=""><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>日帰りのご利用</a></div></div>							</div>
+							<div class="form-group"><label for="sel_area">行先</label><select id="sel_area" name="sel_area" class="form-control" onchange="onChangePrfcr(this.value)">
+<option value="" selected="selected">エリアを選択</option>
+<option value="124">北海道</option>
+<option value="9">青森県</option>
+<option value="10">岩手県</option>
+<option value="11">宮城県</option>
+<option value="12">秋田県</option>
+<option value="13">山形県</option>
+<option value="14">福島県</option>
+<option value="15">茨城県</option>
+<option value="16">栃木県</option>
+<option value="17">群馬県</option>
+<option value="18">埼玉県</option>
+<option value="19">千葉県</option>
+<option value="20">東京都</option>
+<option value="74">　東京・日本橋周辺</option>
+<option value="75">　後楽園・溜池山王周辺</option>
+<option value="76">　浅草・上野周辺</option>
+<option value="77">　池袋・赤羽周辺</option>
+<option value="78">　新宿周辺</option>
+<option value="79">　品川周辺</option>
+<option value="80">　蒲田・大森・羽田周辺</option>
+<option value="81">　木場・葛西周辺</option>
+<option value="82">　東京23区外</option>
+<option value="21">神奈川県</option>
+<option value="83">　川崎</option>
+<option value="84">　横浜</option>
+<option value="85">　相模原・大和・厚木 ・海老名</option>
+<option value="86">　藤沢・茅ヶ崎・平塚</option>
+<option value="87">　小田原</option>
+<option value="22">新潟県</option>
+<option value="23">富山県</option>
+<option value="24">石川県</option>
+<option value="25">福井県</option>
+<option value="26">山梨県</option>
+<option value="27">長野県</option>
+<option value="28">岐阜県</option>
+<option value="29">静岡県</option>
+<option value="30">愛知県</option>
+<option value="31">三重県</option>
+<option value="32">滋賀県</option>
+<option value="33">京都府</option>
+<option value="34">大阪府</option>
+<option value="95">　梅田・野田・天六・弁天町・大正周辺</option>
+<option value="96">　新大阪・東三国・十三周辺</option>
+<option value="97">　淀屋橋・天満橋・船場・本町周辺</option>
+<option value="98">　心斎橋・なんば・日本橋周辺</option>
+<option value="99">　鶴橋・通天閣・天王寺周辺</option>
+<option value="153">　伊丹空港</option>
+<option value="154">　堺</option>
+<option value="156">　桜ノ宮・京橋周辺</option>
+<option value="157">　門真・東大阪</option>
+<option value="35">兵庫県</option>
+<option value="36">奈良県</option>
+<option value="37">和歌山県</option>
+<option value="38">鳥取県</option>
+<option value="39">島根県</option>
+<option value="40">岡山県</option>
+<option value="41">広島県</option>
+<option value="42">山口県</option>
+<option value="43">徳島県</option>
+<option value="44">香川県</option>
+<option value="45">愛媛県</option>
+<option value="47">福岡県</option>
+<option value="48">佐賀県</option>
+<option value="49">長崎県</option>
+<option value="50">熊本県</option>
+<option value="51">大分県</option>
+<option value="52">宮崎県</option>
+<option value="53">鹿児島県</option>
+<option value="54">沖縄県</option>
+<option value="8">韓国</option>
+</select>
+</div>							<div class="form-group"><select id="sel_htl" name="sel_htl" class="form-control">
+
+<option value="">ホテルを選択</option><option value="00029">東横INN品川駅高輪口</option><option value="00244">東横INN品川港南口天王洲アイル</option><option value="00049">東横INN品川青物横丁駅</option><option value="00146">東横INN品川大井町</option><option value="00246">東横INN品川旗の台駅南口</option><option value="00029">東横INN品川駅高輪口</option><option value="00244">東横INN品川港南口天王洲アイル</option><option value="00049">東横INN品川青物横丁駅</option><option value="00146">東横INN品川大井町</option><option value="00246">東横INN品川旗の台駅南口</option></select>
+</div>							<div class="row">
+								<div class="form-inline">
+									<div class="col-xs-12 col-sm-3 col-md-5 col-lg-5">
+										<div class="form-group"><label for="rooms">部屋数</label><select id="rooms" name="rooms" class="form-control">
+<option value="1" selected="selected">1部屋</option>
+<option value="2">2部屋</option>
+<option value="3">3部屋</option>
+<option value="4">4部屋</option>
+<option value="5">5部屋</option>
+<option value="6">6部屋</option>
+<option value="7">7部屋</option>
+<option value="8">8部屋</option>
+<option value="9">9部屋</option>
+</select>
+</div>									</div>
+									<div class="col-xs-12 col-sm-9 col-md-7 col-lg-7">
+										<div class="form-group"><label for="lodgers">大人（１室あたり）</label><select id="lodgers" name="lodgers" class="form-control">
+<option value="1" selected="selected">1人</option>
+<option value="2">2人</option>
+<option value="3">3人</option>
+<option value="4">4人</option>
+<option value="5">5人</option>
+</select>
+</div>										<p>
+											<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-content="小学生以下のお子様は無料で添い寝が可能です。お子様のみのベッド利用や中学生以上は大人と同じ扱いとなります。" data-placement="bottom" data-html="true" data-original-title="" title=""><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>お子様のご宿泊</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label for="sampleRadio">禁煙/喫煙</label><br>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-blue-default active"><input type="radio" name="smoking_slct" value="" checked="checked" id="smoking_slct_" autocomplete="off">
+指定なし</label><label class="btn btn-blue-default"><i class="fas fa-smoking-ban"></i><input type="radio" name="smoking_slct" value="0" id="smoking_slct_0" autocomplete="off">
+禁煙</label><label class="btn btn-blue-default"><i class="fas fa-smoking"></i><input type="radio" name="smoking_slct" value="1" id="smoking_slct_1" autocomplete="off">
+喫煙</label>
+
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="sampleRadio">部屋タイプ</label><br>
+								<div class="btn-group" data-toggle="buttons">
+																		<label class="btn btn-blue-default active"><i class="a"></i><input type="radio" name="room_type_slct" value="" checked="checked" id="room_type_slct_" autocomplete="off">
+指定しない</label><label class="btn btn-blue-default"><i class="b"></i><input type="radio" name="room_type_slct" value="10" id="room_type_slct_10" autocomplete="off">
+シングルルーム</label><label class="btn btn-blue-default"><i class="c"></i><input type="radio" name="room_type_slct" value="20" id="room_type_slct_20" autocomplete="off">
+ダブルルーム</label><label class="btn btn-blue-default"><i class="d"></i><input type="radio" name="room_type_slct" value="30" id="room_type_slct_30" autocomplete="off">
+ツインルーム</label>								</div>
+							</div>
+							<div class="form-group">
+								<a id="detail_a" class="btn btn-block btn-blue btn-lg" data-toggle="collapse" href="#detail">詳細条件を設定
+									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+								</a>
+								<div class="collapse" id="detail">
+									<div class="well">
+										<div class="checkbox">
+											<span>詳細条件</span><br>
+											<label><input type="checkbox" name="sel_prkng" value="1" id="sel_prkng">
+駐車場があるホテル</label>										</div>
+										<div class="checkbox"><label><input type="checkbox" name="sel_mtng_room" value="1" id="sel_mtng_room">
+会議室があるホテル</label></div>										<div class="checkbox"><label><input type="checkbox" name="sel_hrtfl_room" value="1" id="sel_hrtfl_room">
+ハートフルルーム®があるホテル</label></div>																				<!-- echo cp_form_checkbox(array('div_class'=>"checkbox",'id'=>'sel_whlchr_tlt', 'lbl'=> $LBL_WHEELCHAIR_TOILET), $sel_whlchr_tlt); -->
+										<!-- echo cp_form_checkbox(array('div_class'=>"checkbox",'id'=>'sel_lrg_pblc_bath', 'lbl'=> $LBL_LARGE_PUBLIC_BATH), $sel_lrg_pblc_bath); -->
+										<!-- echo cp_form_checkbox(array('div_class'=>"checkbox",'id'=>'sel_rstrnt_bar', 'lbl'=> $LBL_RESTAURANT_BAR), $sel_rstrnt_bar); -->
+																			</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<button id="btn_search" type="button" class="btn btn-orange center-block" onclick="check_to_submit_search(1);"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>この条件でホテルを探す</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+function move_reserve_entry(_this, purl){
+    redirect_to(purl);
+    return false;
+}
+</script>
+
+</div>
+<!-- /container -->
+		<div class="wFull bg_top_banner">
+			<div id="top_banner" class="container">
+			<div class="hidden-sm hidden-md hidden-lg carousel slide mt20 mb30 SPCarousel" id="myCarouselSP">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarouselSP" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarouselSP" data-slide-to="1" class=""></li>
+		<li data-target="#myCarouselSP" data-slide-to="2" class=""></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="item center-block active">
+			<div class="col-xs-12" id="photoSP0"><a href="/campaign/dayuse/" onclick="ga('send', 'event', 'banner', 'click', 'DAY_USE_SP', 1);"><img src="/img/top/day_use258.jpg" class="img-responsive center-block"></a></div>
+		</div>
+		<div class="item center-block ">
+			<div class="col-xs-12" id="photoSP1"><a href="/campaign/weekly_how/" onclick="ga('send', 'event', 'banner', 'click', 'WEEKLY_HOW_SP', 1);"><img src="/img/top/weeklyplan_258_148.jpg" class="img-responsive center-block"></a></div>
+		</div>
+		<div class="item center-block ">
+			<div class="col-xs-12" id="photoSP2"><a href="/news/notice/507" onclick="ga('send', 'event', 'banner', 'click', 'THANKS_COUPON_SP', 1);"><img src="/img/top/thanks_coupon_258x148.jpg" class="img-responsive center-block"></a></div>
+		</div>
+	</div>
+<div id="PrevIconSP"><a class="left  carousel-control" href="#myCarouselSP" data-slide="prev">Prev</a></div>
+<div id="NextIconSP"><a class="right carousel-control" href="#myCarouselSP" data-slide="next">Next</a></div></div>
+
+<div class="hidden-xs                     carousel slide mt20 mb30 PCCarousel" id="myCarouselPC">
+	<ol class="hidden-sm hidden-md hidden-lg carousel-indicators">
+		<li data-target="#myCarouselPC" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarouselPC" data-slide-to="1" class=""></li>
+		<li data-target="#myCarouselPC" data-slide-to="2" class=""></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="item center-block active">
+			<div class="col-sm-4" id="photoPC0"><a href="/campaign/dayuse/" onclick="ga('send', 'event', 'banner', 'click', 'DAY_USE_PC', 1);"><img src="/img/top/day_use258.jpg" class="img-responsive center-block"></a></div>
+			<div class="col-sm-4" id="photoPC1"><a href="/campaign/weekly_how/" onclick="ga('send', 'event', 'banner', 'click', 'WEEKLY_HOW_PC', 1);"><img src="/img/top/weeklyplan_258_148.jpg" class="img-responsive center-block"></a></div>
+			<div class="col-sm-4" id="photoPC2"><a href="/news/notice/507" onclick="ga('send', 'event', 'banner', 'click', 'THANKS_COUPON_PC', 1);"><img src="/img/top/thanks_coupon_258x148.jpg" class="img-responsive center-block"></a></div>
+		</div>
+	</div>
+<div id="PrevIconPC" class="hidden-sm hidden-md hidden-lg"><a class="left  carousel-control" href="#myCarouselPC" data-slide="prev">Prev</a></div>
+<div id="NextIconPC" class="hidden-sm hidden-md hidden-lg"><a class="right carousel-control" href="#myCarouselPC" data-slide="next">Next</a></div></div>
+
+			</div>
+		</div>
+
+<script>
+var g_htl_code = '';
+var g_htl_name = '';
+var g_checkin  = '';
+var g_stays    = '';
+var g_ldgng_num = '';
+var g_room_class_id = '';
+var g_smoking = '';
+//追加 P20011 START 2020.09.30 中尾友彦
+var g_crprtn_mmbrshp_code = '';
+//追加 P20011 END
+// 追加 P20015 START 2021.02.01 藤野勝矢
+var g_ary_plan_code_name = [];
+// 追加 P20015 END
+
+//コールバック用のクラスを定義
+var callback_modal_room_type = function() {
+	// ホテルList取得
+	this.get_room_vacant_list = function(htl_code,htl_name) {
+		// get Param
+		g_htl_code    = htl_code;
+		g_htl_name    = htl_name;
+		g_checkin       = $('input:hidden[name="hddn_checkin"]').val();
+		g_stays         = $('input:hidden[name="hddn_stays"]').val();
+		g_ldgng_num     = $('input:hidden[name="hddn_ldgng_num"]').val();
+		g_room_class_id = $('input:hidden[name="hddn_room_type_slct"]').val();
+		g_smoking       = $('input:hidden[name="hddn_smoking_slct"]').val();
+		//追加 P20011 START 2020.09.30 中尾友彦
+		g_crprtn_mmbrshp_code = $('input:hidden[name="hddn_crprtn_mmbrshp_code"]').val();
+		//追加 P20011 END
+		// 行全削除
+		$('#room_list_div').children("div").each(function(idx, elm){
+			$(elm).remove();
+		});
+		// call ajax Go To キャンペーン対象店舗の確認
+		var data_goto = post_json('/Ajax/is_applicable_goto_campaign',
+				{
+					'htl_code'      : htl_code,
+					'date_chkin'    : $('input:hidden[name="hddn_checkin"]').val(),
+				}
+		);
+		data_goto.done(function (ret_goto) {
+			if (ret_goto.val === true) {
+				// Go To キャンペーン対象店舗
+				$("#modal-room-type-msg").html("※室数を選択して、予約ボタンを押してください。まとめて10室以上は選択できません。<br>※異なるプランの室数を選択することはできません。<br>※Go To キャンペーンを利用される場合、表示金額から35％割引になります。");
+			} else {
+				// 通常のメッセージ
+				$("#modal-room-type-msg").html("※室数を選択して、予約ボタンを押してください。まとめて10室以上は選択できません。<br>※異なるプランの室数を選択することはできません。");
+			}
+		});
+		data_goto.fail(function(xhr, ajaxOptions, thrownError) {
+			ajax_fail_console(xhr, ajaxOptions, thrownError);
+		});
+
+		// call ajax
+		var data = post_json('/Ajax/get_room_vacant_charge_list',
+				{'lcl_id'        : $('input:hidden[name="hddn_lcl_id"]').val(),
+				 'htl_code'      : htl_code,
+				 'checkin'       : g_checkin,
+				 'stays'         : g_stays,
+				 'ldgng_num'     : g_ldgng_num,
+				 'room_class_id' : g_room_class_id,
+				 'smoking'       : g_smoking,
+				 //追加 P20011 START 2020.09.30 中尾友彦
+				 'crprtn_mmbrshp_code' : g_crprtn_mmbrshp_code,
+				 //追加 P20011 END
+				 }
+		);
+		data.done(function (ret) {
+			if (ret.val != ""){
+
+				var str_plan_nm, str_plan_all, str_plan_pop_frmt, str_plan_nm_alert;
+				var str_curr_plan_code = '';
+				var int_idx = 0;
+				g_ary_plan_code_name = [];
+
+	            // Json連想配列をLoop
+	            $.each(ret.val,function(key,item){
+					// 全てのプラン名を保存する。プランコードが異なる場合処理される
+					if (str_curr_plan_code.toString() !== item.plan_code.toString()) {
+						str_plan_nm_alert = ( typeof item.plan_name === 'undefined') ? '通常部屋' : item.plan_name;
+						g_ary_plan_code_name[int_idx++] = { plan_code: item.plan_code, plan_name: str_plan_nm_alert };
+						str_curr_plan_code = item.plan_code;
+					}
+
+	            	var ary_popover = [];
+	            	str_plan_nm  = '';
+	            	str_plan_all = '';
+					str_plan_pop_frmt = '<a class="modal_plan_exp brNone" href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-content="%s" data-placement="bottom" data-html="true" data-original-title="" title="" tabindex="0">%s</a>';
+					if ( item.plan_code.toString() !== '0000' ) {
+
+						str_plan_nm = item.plan_name;
+
+						if ( item.plan_dtl !== undefined && item.plan_dtl !== null && item.plan_dtl.length > 0 ) {
+							ary_popover.push(sprintf(str_plan_pop_frmt, item.plan_dtl, 'プラン詳細説明'));
+						}
+						if ( item.plan_ntc !== undefined && item.plan_ntc !== null && item.plan_ntc.length > 0 ) {
+							ary_popover.push(sprintf(str_plan_pop_frmt, item.plan_ntc, '注意事項'));
+						}
+						str_plan_all = ary_popover.join("/") + "<br>";
+					}
+                    if (item.plan_code && $("#plan_info_"+item.plan_code).length == 0) {
+
+                      $('#room_list_div').append(
+                          '<div id="plan_info_' + item.plan_code + '" class="dpNone" data-stays="' + item.stays + '" />');
+                    }
+
+
+					var div_open = '<div class="form-group">';
+					var row_1 = '<label class="col-sm-5 control-label alL" for="InputSelect">%s&nbsp;%s<i class="%s"></i>&nbsp;%s</label>';
+					var row_2 = '<div class="col-sm-2 control-label"><label class="fwNormal mb0"><span class="price">%s</span></label>%s</div>';
+					var row_3 = '<div class="col-sm-2 control-label"><label class="fwNormal"><span class="%s">%s</span></label></div>';
+					var row_4 = '<div class="col-sm-3">';
+					var row_5 = '<p>室</p>';
+					var div_close ='</div>';
+
+					// 料金が 0 以下(false)の場合
+                    var min_price_with_tag;
+                    if (item.min_price === false) {
+                      min_price_with_tag = sprintf(row_2,'', '');
+                    } else {
+                      if (g_stays > 7) {
+                        var prc_ntc = sprintf('※%s泊の料金になります', item.stays);
+                        min_price_with_tag = sprintf(row_2, item.min_price + '～', '<div>' + prc_ntc + '</div>');
+                      } else {
+                        min_price_with_tag = sprintf(row_2, item.min_price + '～', '');
+                      }
+                    }
+
+					var row_html = div_open
+						+ sprintf(row_1,str_plan_nm,str_plan_all,item.smking_icon,item.room_type_name) + min_price_with_tag
+						+ sprintf(row_3,item.spn_cls,item.vcnts_mssg) + row_4 + item.frm_drpdwn + row_5 + div_close + div_close;
+					$('#room_list_div').append(row_html);
+	            });
+	            $('[data-toggle="popover"]').popover({
+	            	'trigger': 'focus',
+	            	'placement': 'bottom',
+	            	'container': '.modal-body'
+	            });
+			}
+		});
+		data.fail(function(xhr, ajaxOptions, thrownError) {
+			ajax_fail_console(xhr, ajaxOptions, thrownError);
+		});
+	}
+};
+
+// show modal
+function room_type_show_modal(htl_code,htl_name){
+    var cllbck = new callback_modal_room_type();
+	cllbck['get_room_vacant_list'](htl_code,htl_name);
+    show_modal('#room_type');
+	return false;
+}
+
+// close modal with update
+function room_type_close_modal_update(modal_id){
+	if (get_room_num_total() > 9){
+		alert('9室以上は選択できません。');
+		return false;
+	}
+	plan_code_dplct_list = chk_if_dplct_plan_exist();
+	if (plan_code_dplct_list !== false){
+		str_dplct_plan_names = get_dplct_plan_names(plan_code_dplct_list);
+		alert('異なるプランの室数は選択できません。\n\n以下の異なるプランの室数が選択されています。\n' + str_dplct_plan_names);
+		return false;
+	}
+	if (move_reserve_entry_room_type(modal_id) == true){
+	    close_modal(modal_id);
+	}else{
+		alert('部屋数を指定してください');
+	}
+	return false;
+}
+
+// move_reservation_from_room_type
+function move_reserve_entry_room_type(modal_id){
+	var room_list = [];
+	var plan_code = "";
+	var url_frmt= '/Reservation/index/entry?htl_code=%s&htl_name=%s&checkin=%s&stays=%s&use=%s&room_clss=%s&rooms=%s&plan_code=%s';
+	// 予約画面へsubmitt
+	get_room_list(room_list);
+	plan_code = get_plan_code();
+	if (room_list.length > 0 && plan_code.length > 0){
+        var stays = g_stays;
+        var plan_min_stay = $("#plan_info_" + plan_code).attr("data-stays");
+        if (plan_min_stay && parseInt(stays) < parseInt(plan_min_stay)) {
+          stays = plan_min_stay;
+        }
+		var url = sprintf(url_frmt, g_htl_code,g_htl_name,g_checkin,stays,g_ldgng_num,g_room_class_id,room_list.join('|'),plan_code);
+		redirect_to(url);
+		return true
+	}else{
+		return false;
+	}
+}
+
+// Get roomtype num list
+function get_room_list(room_list){
+	$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+		if ($(elm).val() > 0){
+			str_plancode_roomtypeid = $(elm).attr("id");
+			ary_plancode_roomtypeid = str_plancode_roomtypeid.split('_');
+			room_list.push(ary_plancode_roomtypeid[1] + '_' + $(elm).val());
+		}
+	});
+}
+
+function get_plan_code(){
+	var plan_code_list     = [];
+	$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+		if ($(elm).val() > 0){
+			str_plancode_roomtypeid = $(elm).attr("id");
+			ary_plancode_roomtypeid = str_plancode_roomtypeid.split('_');
+			plan_code_list.push(ary_plancode_roomtypeid[0]);
+		}
+	});
+
+	if (plan_code_list.length > 0) {
+		plan_code = plan_code_list[0];
+		for (intI0 = 1; intI0 < plan_code_list.length; intI0++) {
+			if (plan_code_list[intI0].toString() !== plan_code.toString()) {
+				return "";
+			}
+		}
+		return plan_code;
+	} else {
+		return "";
+	}
+}
+
+function chk_if_dplct_plan_exist() {
+	var plan_code_list       = [];
+	var plan_code_dplct_list = [];
+	$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+		if ($(elm).val() > 0){
+			str_plancode_roomtypeid = $(elm).attr("id");
+			ary_plancode_roomtypeid = str_plancode_roomtypeid.split('_');
+			plan_code_list.push(ary_plancode_roomtypeid[0]);
+		}
+	});
+	var int_num_dplct = 0;
+	if (plan_code_list.length > 0) {
+		plan_code = plan_code_list[0];
+		plan_code_dplct_list[int_num_dplct++] = get_plancode_and_planname(plan_code);
+		for (intI1 = 1; intI1 < plan_code_list.length; intI1++) {
+			if (plan_code_list[intI1].toString() !== plan_code.toString()) {
+				plan_code_dplct_list[int_num_dplct++] = get_plancode_and_planname(plan_code_list[intI1]);
+				plan_code = plan_code_list[intI1];
+			}
+		}
+	}
+	if ( plan_code_dplct_list.length > 1 ) {
+		return plan_code_dplct_list;
+	} else {
+		return false;
+	}
+}
+
+function get_plancode_and_planname(str_plan_code) {
+
+	for (intI2 = 0; intI2 < g_ary_plan_code_name.length; intI2++) {
+		if (g_ary_plan_code_name[intI2]["plan_code"].toString() === str_plan_code.toString() ) {
+			plan_code_dplct = { plan_code: g_ary_plan_code_name[intI2]["plan_code"], plan_name: g_ary_plan_code_name[intI2]["plan_name"] };
+			return plan_code_dplct;
+		}
+	}
+    return false;
+}
+
+function get_dplct_plan_names(plan_code_dplct_list) {
+	var str_dplct_plan_names = "";
+
+	for (intI3 = 0; intI3 < plan_code_dplct_list.length; intI3++) {
+		str_dplct_plan_names += ' * ' + plan_code_dplct_list[intI3]["plan_name"] + "\n";
+	}
+	return str_dplct_plan_names;
+}
+
+function get_room_num_total(){
+	total_num = 0;
+	$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+		if ($(elm).val() > 0){
+			total_num = total_num + parseInt($(elm).val());
+		}
+	});
+	return total_num;
+}
+$(function() {
+/*
+	$(document).on("change", ".leftovers", function() {
+
+		if ( $(this).val() > 0 ) {
+			// 他のプランコードの室数をDisable化する
+			// 現在のプランコード
+			str_curr_plancode_roomtypeid = $(this).attr("id");
+			ary_curr_plancode_roomtypeid = str_curr_plancode_roomtypeid.split('_');
+			str_curr_plan_code = ary_curr_plancode_roomtypeid[0];
+
+			// 他のプランコードの室数をDisable化する
+			$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+				str_plancode_roomtypeid = $(elm).attr("id");
+				ary_plancode_roomtypeid = str_plancode_roomtypeid.split('_');
+				if (str_curr_plan_code !== ary_plancode_roomtypeid[0]) {
+					$(elm).prop("disabled", true);		// Disable化
+				}
+			});
+
+		// 室数が 0 の場合
+		} else {
+			// 他に室数がセットされているか確認
+			if ( chk_if_other_room_num_selected() === true ) {
+
+			// 室数が全て 0 の場合は、室数を全て Enable
+			} else {
+				// 他のプランコードの室数をEnable化する
+				$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+					$(elm).prop("disabled", false);		// Enable化
+				});
+			}
+		}
+	});
+*/
+});
+
+function chk_if_other_room_num_selected() {
+
+	var int_room_num_selected = 0;
+	// 他のプランコードの室数をDisable化する
+	$('#room_list_div').find('.leftovers').each(function(idx, elm) {
+		str_plancode_roomtypeid = $(elm).attr("id");
+		ary_plancode_roomtypeid = str_plancode_roomtypeid.split('_');
+
+		if ( $(elm).val() > 0 ) {
+			int_room_num_selected++;
+		}
+	});
+
+	if (int_room_num_selected > 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+</script>
+<!-- モーダル・ダイアログ -->
+<div class="modal fade" id="room_type" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                				<h4 class="modal-title text-primary">部屋タイプ室数選択</h4>
+                			</div>
+			<div class="colDetail mt10 ml20 colr_red">
+				<h5 id="modal-room-type-msg"></h5>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<div id="room_list_div">
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="InputSelect">禁煙シングル</label>
+							<div class="col-sm-2 control-label"><label class="fwNormal">5,800円～</label></div>
+							<div class="col-sm-2 control-label"><label class="fwNormal">△残り5</label></div>
+							<div class="col-sm-3">
+								<select id="1_room_type" name="1_room_type" class="form-control leftovers">
+<option value="0" selected="selected">-</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select>
+<p>室</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="InputSelect">喫煙シングル</label>
+							<div class="col-sm-2 control-label"><label class="fwNormal">5,800円～</label></div>
+							<div class="col-sm-2 control-label"><label class="fwNormal">○空室あり</label></div>
+							<div class="col-sm-3">
+								<select id="1_room_type" name="1_room_type" class="form-control leftovers">
+<option value="0" selected="selected">-</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select>
+<p>室</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-10">
+							<button type="button" class="btn btn-blue mr10" onclick="close_modal('#room_type');">キャンセル</button>
+							<button type="button" class="btn btn-orange" onclick="room_type_close_modal_update('#room_type');">予約</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- モーダル・ダイアログ はここまで -->
+		<footer class="footer bg-primary mt10 not_show_on_print">
+			<div class="container">
+				<p class="text-center">Copyright c Toyoko Inn Co.,Ltd. All rights reserved.</p>
+			</div>
+			<div id="pageTopBtn" class="not_show_on_print" style="display: none;"><a href="#header"><img src="/img/common/com_bt01.png" width="48" height="64" alt="TOP"></a></div>
+		</footer> <!-- /footer -->
+<!-- START #19760 チャットボット -->
+<script type="text/javascript">
+<!--
+var vgHost='chat3-66.chatdealer.jp',vgProtocol='https',vgPort='443',vgAtxt='bwdqUChat3-66',vgSid=1;
+(function(){try{
+var ins=document.createElement('script'),dt=new Date,tg=document.getElementsByTagName('script')[0];
+ins.type='text/javascript';ins.async=!0;ins.setAttribute('charset','utf-8');
+ins.src=vgProtocol+'://'+vgHost+':'+vgPort+'/chat/client.js?'+dt.getTime();tg.parentNode.insertBefore(ins,tg);
+}catch(e){console.log(e);}})();
+//-->
+</script>
+<!-- END チャットボット -->
+	
+<iframe name="vgloadif1742110174320" src="https://chat3-66.chatdealer.jp:443/chat/webstorage_check.html?1742110174320&amp;ver=10.3.0.0&amp;modeno=2" style="margin: 0;padding: 0;border: 0;min-height: 1px;min-width: 1px;display: none;"></iframe><iframe id="vgdataMainFrm1742110174487" name="vgdataMainFrm1742110174487" allowtransparency="true" style="padding: 0px; min-height: 1px; min-width: 1px; margin: 0px; width: 90px; height: 304px; position: fixed; overflow: hidden; border: none; z-index: 2000000000; border-radius: 8px 0px 0px 8px; bottom: 20px; right: 0px; box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px; opacity: 1;" scrolling="no" frameborder="no" src="https://chat3-66.chatdealer.jp:443/chat/blank.html?ver=10.3.0.0&amp;modeno=2" class="chatdealer-main-frame"></iframe><iframe id="vgCtaFrm1742110174487" name="vgCtaFrm1742110174487" style="margin: 0;padding: 0;border: 0;min-height: 1px;min-width: 1px;width: 0px;height: 0px;position:fixed; bottom:0px; right:15px;overflow: hidden;border: none;z-index: 2000000002;display: none;" scrolling="no" frameborder="no" src=""></iframe><div id="vgCtaModalDivWrap"><div id="vgCtaModalDiv" style="width: 0px;height: 0px;position:fixed; bottom:0px; right:15px;overflow: hidden;border: none;z-index: 2000000001;display: none;"></div></div></body><x-pw-glass style="position: fixed; inset: 0px; z-index: 2147483646; pointer-events: none; display: flex; background-color: transparent;"></x-pw-glass></html>
