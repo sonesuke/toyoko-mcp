@@ -76,4 +76,4 @@ async def save_dom(page: Page, path: str) -> None:
     dom_content = await page.content()
     with open(path, "w", encoding="utf-8") as file:
         file.write(dom_content)
-    logger.debug("DOM content saved to dom_content.html")
+    logger.debug(f"DOM content saved to {path}")
