@@ -1,0 +1,381 @@
+<html lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="robots" content="noindex, nofollow, noarchive"><!-- 検索エンジンにクロールさせない -->
+
+<!-- 変更 #32247 START -->
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M5KR7Q2J"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-33NCWFH7DL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-33NCWFH7DL');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M5KR7Q2J');</script>
+<!-- End Google Tag Manager -->
+<!-- 変更 #32247 END -->
+
+  <link rel="icon" href="/favicon.ico">
+
+  <title>ログインページ</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css?ver=0020">
+  <!-- Bootstrap theme -->
+  <link rel="stylesheet" href="/css/bootstrap-theme.min.css?ver=0020">
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link rel="stylesheet" href="/assets/css/ie10-viewport-bug-workaround.css?ver=0020">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css?ver=0020">
+  <link rel="stylesheet" href="/assets/datepicker/css/bootstrap-datepicker3.min.css?ver=0020">
+  <link rel="stylesheet" href="/assets/swiper/css/swiper.min.css?ver=0020"><!-- shop.htmlのCSS -->
+  <link rel="stylesheet" href="/css/style.css?ver=0018">
+  <!-- Bootstrap core JavaScript -->
+  <script src="/js/jquery-2.1.1.min.js?ver=0020"></script>
+  <script src="/js/jquery.mask.min.js?ver=0020"></script>
+  <script src="/js/bootstrap.js?ver=0020"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="/assets/js/ie10-viewport-bug-workaround.js?ver=0020"></script>
+  <script src="/js/validator.js?ver=0020"></script>
+  <script src="/assets/datepicker/js/bootstrap-datepicker.min.js?ver=0020"></script>
+  <script src="/assets/datepicker/js/bootstrap-datepicker.ja.js?ver=0020"></script>
+  <script src="/assets/swiper/js/swiper.min.js?ver=0020"></script><!-- shop.htmlのJavaScript -->
+  <script src="/js/basic.js?ver=0018"></script>
+  <script src="/js/toyoko.js?ver=0018"></script>
+  <script src="/js/agh.sprintf.js?ver=0018"></script>
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-orange.js?ver=0020"></script><![endif]-->
+  <script src="/assets/js/ie-emulation-modes-warning.js?ver=0020"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js?ver=0020"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js?ver=0020"></script>
+<![endif]-->
+
+</head><x-pw-glass style="position: fixed; inset: 0px; z-index: 2147483646; pointer-events: none; display: flex; background-color: transparent;"></x-pw-glass>
+
+<body class="login-form" onload="body_onload()">
+
+<!-- 変更 #32247 START -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5KR7Q2J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- 変更 #32247 END -->
+
+  <header id="header">
+      <div class="header-01">
+          <div class="container clearfix">
+                              <div class="functionArea">
+                  <form id="ntnltyForm1" name="ntnltyForm" action="/">
+                      <div class="selectLang">
+                          <label class="btn-arrow btn-arrow-bottom">
+                              <select id="slct_lngg" name="lcl_id" class="stctLngg" onchange="if($(this).val() != '0' &amp;&amp; $(this).val() != 'ja') $('#ntnltyForm1').submit();">
+<option value="0" selected="selected">Language</option>
+<option value="ja">日本語</option>
+<option value="en">English</option>
+<option value="ko">한국어</option>
+</select>
+                          </label>
+                      </div>
+                  </form>
+                  <div class="selectFontsize">
+                      <p>文字サイズ</p>
+                      <ul>
+                          <li class="middle current">中</li>
+                          <li class="large ">大</li>
+                      </ul>
+                  </div>
+                  <!-- /functionArea -->
+              </div>
+          </div>
+      </div>
+      <div class="header-02 bg-primary">
+          <div class="container clearfix">
+              <div class="logo" style="align-items: baseline;">
+                  <h1><a href="/Search/index/condition"><img src="/images/logo_new.png" alt="toyoko-inn.com東横INN" style="width: auto; height: 60px;"></a></h1>
+                  <div class="wAuto flL"><span>東横INNクラブコーポレートビジネス会員サイト</span>
+              </div>
+                      </div>
+              <div class="sub-logo">
+                      <ul class="user-menu mr0 hidden-xs hidden-sm visible-md visible-lg">
+                      <li class="dpBlock alR mb5 submenu_wo_border_hlist"><a href="/Search/hotel_list"><i class="fas fa-list mr5"></i>ホテル一覧</a></li>
+                              <li>&nbsp;</li>
+                          </ul>
+                  </div>
+                      <div id="mobile-head">
+                  <div id="nav-toggle">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+              </div>
+                  </div>
+              </div>
+      <div id="headermenu">
+          <div class="container">
+              <nav id="global-nav">
+                  <form id="ntnltyForm2" name="ntnltyForm" action="/">
+                      <div class="selectLang-sp">
+                          <label class="btn-arrow btn-arrow-right">
+                              <select id="slct_lngg" name="lcl_id" class="stctLngg" onchange="if($(this).val() != '0' &amp;&amp; $(this).val() != 'ja') $('#ntnltyForm2').submit();">
+<option value="0">Language</option>
+<option value="ja" selected="selected">日本語</option>
+<option value="en">English</option>
+<option value="ko">한국어</option>
+</select>
+                          </label>
+                      </div>
+                  </form>
+                  <ul>
+                      <div class="login-info-sp">
+                          <ul id="mypage-menu" class="open-mypage bgcl-333">
+                              <li><a href="/Mymenu/"><i class="fas fa-user-check mr5"></i>マイページ</a></li>
+                              <li><a href="/Reservation/index/lists"><i class="far fa-calendar-alt mr5"></i>予約確認・変更・キャンセル</a></li>
+                              </ul>
+                      </div>
+                      <li class="news"><a href="/News">新着情報</a></li>
+                      <li class="feature"><a href="/Feature">東横INNの特長</a></li>
+                      <li class="campaign"><a href="/Campaign">キャンペーン・おすすめ</a></li>
+                      <li class="club"><a href="/Support/info">ご利用案内</a></li>
+                      <li class="hidden-md hidden-lg"><a href="/Search/hotel_list"><i class="fas fa-list mr5"></i>ホテル一覧</a></li>
+                      <div class="login-info-sp">
+                          <ul id="mypage-menu" class="open-mypage bgcl-333">
+                              <li><a href="/auth/logout">ログアウト</a></li>
+                          </ul>
+                      </div>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+<div class="pankuzu_wrap hidden-xs hidden-sm visible-md visible-lg">
+  <div id="pankuzu" class="container">
+<ul id="topicPath" class=""><li>東横INNコーポレートTOP</li></ul>    </div>
+</div>
+
+  </header><!--/#header-->
+<script>
+$(document).ready(function() {
+  if ( $(window).width() > 768 ) {
+    // タブレット、ＰＣの画面サイズ カルーセル停止
+    $('#myCarouselPC').carousel('pause');
+    $('#myCarouselSP').carousel('pause');
+  } else {
+    // スマホの画面サイズ カルーセル開始
+    $('#myCarouselPC').carousel('pause');
+    $('#myCarouselSP').carousel('cycle');
+  }
+
+  // ブラウザのサイズが変更された時に起動する
+  $(window).resize(function() {
+    // タブレット、ＰＣの画面サイズ カルーセル停止
+    if ( $(window).width() > 768 ) {
+      $('#myCarouselPC').carousel('pause');
+      $('#myCarouselSP').carousel('pause');
+    } else {
+      // スマホの画面サイズ カルーセル開始
+      $('#myCarouselPC').carousel('pause');
+      $('#myCarouselSP').carousel('cycle');
+    }
+  });
+});
+</script>
+<div class="page-title">
+<div class="page-header bg-primary">
+  <h1 class="text-center">ログインページ</h1>
+</div>
+</div>
+
+<style>
+
+.improtant-h2{
+padding: 0px 5px;
+font-size: 1.7em !important;
+}
+@media screen and (max-width: 1199px) {
+.improtant-h2{
+  padding: 0px 5px;
+  font-size: 1.4em !important;
+}
+}
+@media screen and (max-width: 991px) {
+.improtant-h2{
+  padding: 0px 5px;
+  font-size: 1.4em !important;
+}
+}
+@media screen and (max-width: 767px) {
+.improtant-h2{
+  margin-bottom: 10px !important;
+  font-size: 1.4em !important;
+}
+.login-form .improtant {
+  padding-top: 10px !important;
+}
+.xs-pr15l0 {
+  padding-right: 15px;
+  padding-left: 0px;
+}
+}
+.mntnnc-wo-link {
+margin-bottom: 15px;
+padding-bottom: 8px;
+border-bottom: 1px solid #ddd;
+}
+.improtant-wo-link {
+margin-bottom: 8px;
+
+}
+.improtant-w-link {
+margin-bottom: 8px;
+position: relative;
+}
+a.improtant-w-link::before {
+content: "";
+display: inline-block;
+margin-right: 7px;
+height: 6px;
+width: 6px;
+border-right: 1px solid #888888;
+border-bottom: 1px solid #888888;
+-moz-transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+transform: rotate(-45deg);
+position: absolute;
+top: 7px;
+left: 0px;
+}
+</style>
+
+<div class="container theme-showcase">
+
+
+</div> <!-- /container -->
+
+
+<div class="login-wrapper mb0">
+<div class="container">
+  <div class="row">
+  
+    <div class="col-xs-6">
+      <div id="have-account" class="box">
+        <div class="page-header">
+          <h2 class="text-center text-primary">ユーザーIDをお持ちの方</h2>
+        </div>
+        <form id="lgn_form" role="form" data-toggle="validator" method="post" action="/Auth/index/" novalidate="true">
+          
+<input type="hidden" name="login_mode" value="0">
+          
+<input type="hidden" name="ci_csrf_token" value="62a2bf8d2803c01c4ce636360132746f">
+                        <div class="form-group"><div class="clearfix"><label for="corpid">法人ID</label><input type="text" name="corpid" value="" id="corpid" class="form-control" placeholder="例)B9999-999999">
+</div></div>												<div class="form-group"><div class="clearfix"><label for="staffid">ユーザーID、又はユーザーメールアドレス</label><input type="text" name="staffid" value="" id="staffid" class="form-control">
+</div></div>						<div class="form-group"><div class="clearfix"><label for="passwd">ユーザーパスワード</label><input type="password" name="passwd" value="" id="passwd" class="form-control">
+</div></div>													<input type="hidden" name="grp_saves" value="0" id="saves_hddn" class="form-control">
+            <div class="checkbox"><label><input type="checkbox" name="grp_saves" value="1" id="grp_saves">
+法人ID、ユーザーID、ユーザーパスワードを保存する <span class="fontS text-danger">※共用のパソコンではチェックを外してください。</span></label></div>												<button type="submit" class="btn btn-lg btn-blue">ログイン</button>
+        </form>
+        <p class="text-center"><a href="/Auth/login_remind/userid" class="link">ユーザーIDを忘れた方はこちら</a></p>
+        <p class="text-center"><a href="/Auth/login_remind/passwd" class="link">パスワードを忘れた方はこちら</a></p>
+          </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div id="no-account" class="box">
+        <div class="page-header">
+          <h3 class="text-center text-primary">初めてご利用の方</h3>
+        </div>
+        <div class="content">
+          <button type="button" class="btn btn-lg btn-blue" onclick="window.location.href='/Auth/login_corp'">ユーザーID新規登録</button>
+          <p></p>
+        </div>
+      </div>
+        </div>
+  </div>
+</div> <!-- /container -->
+</div>
+
+<!-- Top banner -->
+
+  <div class="wFull bg_top_banner">
+    <div id="top_banner" class="container">
+    <div class="hidden-sm hidden-md hidden-lg carousel slide mt20 mb30 SPCarousel" id="myCarouselSP">
+<ol class="carousel-indicators">
+  <li data-target="#myCarouselSP" data-slide-to="0" class="active"></li>
+  <li data-target="#myCarouselSP" data-slide-to="1" class=""></li>
+  <li data-target="#myCarouselSP" data-slide-to="2" class=""></li>
+</ol>
+<div class="carousel-inner">
+  <div class="item center-block active">
+    <div class="col-xs-12" id="photoSP0"><a href="/campaign/dayuse/" onclick="ga('send', 'event', 'banner', 'click', 'DAY_USE_SP', 1);"><img src="/img/top/day_use258.jpg" class="img-responsive center-block"></a></div>
+  </div>
+  <div class="item center-block ">
+    <div class="col-xs-12" id="photoSP1"><a href="/campaign/weekly_how/" onclick="ga('send', 'event', 'banner', 'click', 'WEEKLY_HOW_SP', 1);"><img src="/img/top/weeklyplan_258_148.jpg" class="img-responsive center-block"></a></div>
+  </div>
+  <div class="item center-block ">
+    <div class="col-xs-12" id="photoSP2"><a href="/news/notice/507" onclick="ga('send', 'event', 'banner', 'click', 'THANKS_COUPON_SP', 1);"><img src="/img/top/thanks_coupon_258x148.jpg" class="img-responsive center-block"></a></div>
+  </div>
+</div>
+<div id="PrevIconSP"><a class="left  carousel-control" href="#myCarouselSP" data-slide="prev">Prev</a></div>
+<div id="NextIconSP"><a class="right carousel-control" href="#myCarouselSP" data-slide="next">Next</a></div></div>
+
+<div class="hidden-xs                     carousel slide mt20 mb30 PCCarousel" id="myCarouselPC">
+<ol class="hidden-sm hidden-md hidden-lg carousel-indicators">
+  <li data-target="#myCarouselPC" data-slide-to="0" class="active"></li>
+  <li data-target="#myCarouselPC" data-slide-to="1" class=""></li>
+  <li data-target="#myCarouselPC" data-slide-to="2" class=""></li>
+</ol>
+<div class="carousel-inner">
+  <div class="item center-block active">
+    <div class="col-sm-4" id="photoPC0"><a href="/campaign/dayuse/" onclick="ga('send', 'event', 'banner', 'click', 'DAY_USE_PC', 1);"><img src="/img/top/day_use258.jpg" class="img-responsive center-block"></a></div>
+    <div class="col-sm-4" id="photoPC1"><a href="/campaign/weekly_how/" onclick="ga('send', 'event', 'banner', 'click', 'WEEKLY_HOW_PC', 1);"><img src="/img/top/weeklyplan_258_148.jpg" class="img-responsive center-block"></a></div>
+    <div class="col-sm-4" id="photoPC2"><a href="/news/notice/507" onclick="ga('send', 'event', 'banner', 'click', 'THANKS_COUPON_PC', 1);"><img src="/img/top/thanks_coupon_258x148.jpg" class="img-responsive center-block"></a></div>
+  </div>
+</div>
+<div id="PrevIconPC" class="hidden-sm hidden-md hidden-lg"><a class="left  carousel-control" href="#myCarouselPC" data-slide="prev">Prev</a></div>
+<div id="NextIconPC" class="hidden-sm hidden-md hidden-lg"><a class="right carousel-control" href="#myCarouselPC" data-slide="next">Next</a></div></div>
+
+    </div>
+  </div>
+
+<!-- お知らせ -->
+<div class="container pt20">
+<div class="float-box clearfix">
+  <div class="left-box">
+    <h2 class="text-primary">お知らせ</h2>
+  </div>
+  <div class="right-box">
+    <dl>
+      <dt>2025-03-12</dt>
+      <dd><a href="/Search/Detail/00365/?lcl_id=ja">「東横INN高松駅前」オープン！</a></dd>
+    </dl>
+    <dl>
+      <dt>2025-03-07</dt>
+      <dd><a href="/Search/Detail/00367/?lcl_id=ja">【2025/6/2 オープン】東横INN熊本空港 Web予約受付開始しました！</a></dd>
+    </dl>
+    <dl>
+      <dt>2025-03-03</dt>
+      <dd><a href="/news/notice/739">ホテル店舗名称変更のお知らせ</a></dd>
+    </dl>
+    <p class="text-right"><a href="/News">全て見る<span class="glyphicon glyphicon-play" aria-hidden="true"></span></a></p>
+  </div>
+</div>
+</div>		<footer class="footer bg-primary mt10 not_show_on_print">
+    <div class="container">
+      <p class="text-center">Copyright c Toyoko Inn Co.,Ltd. All rights reserved.</p>
+    </div>
+    <div id="pageTopBtn" class="not_show_on_print" style="display: none;"><a href="#header"><img src="/img/common/com_bt01.png" width="48" height="64" alt="TOP"></a></div>
+  </footer> <!-- /footer -->
+
+</body></html>
