@@ -13,7 +13,7 @@ import logging
 import os
 from datetime import datetime
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
 
@@ -95,17 +95,22 @@ async def list_tools() -> list[types.Tool]:
         types.Tool(
             name="login",
             description="Login to the Toyoko Inn(東横イン) website",
-            inputSchema={},
+            inputSchema={
+                "type": "object",
+            },
         ),
         types.Tool(
             name="list_region",
             description="List the regions available for booking in Toyoko Inn(東横イン)",
-            inputSchema={},
+            inputSchema={
+                "type": "object",
+            },
         ),
         types.Tool(
             name="list_hotel",
             description="List the hotels available for booking in Toyoko Inn(東横イン)",
             inputSchema={
+                "type": "object",
                 "properties": {
                     "region_id": {"type": "string", "description": "ID of the region"},
                 },
@@ -116,6 +121,7 @@ async def list_tools() -> list[types.Tool]:
             name="is_available_room",
             description="List the rooms available for booking in Toyoko Inn(東横イン)",
             inputSchema={
+                "type": "object",
                 "properties": {
                     "region_id": {"type": "string", "description": "ID of the region"},
                     "hotel_id": {"type": "string", "description": "ID of the hotel"},
