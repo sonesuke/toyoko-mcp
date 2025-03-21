@@ -7,11 +7,8 @@ from urllib.parse import quote
 import pytest
 from pytest_asyncio import fixture  # Import fixture from pytest-asyncio
 from toyoko_mcp.core import (
-    is_available_room,
-    list_hotel,
-    list_region,
+    call_tool,
     list_tools,
-    login,
     initialize_playwright,
     shutdown_playwright,
     URLs,
@@ -74,7 +71,7 @@ async def test_login() -> None:
     """
     Test the login function.
     """
-    result = await login("login", {})
+    result = await call_tool("login", {})
     assert len(result) == 1
     assert result[0].type == "text"
     assert result[0].text == "Login successfully"
@@ -85,7 +82,7 @@ async def test_list_region() -> None:
     """
     Test the list_region function.
     """
-    result = await list_region("list_region", {})
+    result = await call_tool("list_region", {})
     assert len(result) == 1
     assert result[0].type == "text"
     assert re.search("品川周辺", result[0].text)
@@ -96,19 +93,19 @@ async def test_list_hotel() -> None:
     """
     Test the list_hotel function.
     """
-    result = await list_hotel("list_hotel", {"region_id": "79"})
+    result = await call_tool("list_hotel", {"region_id": "79"})
     assert len(result) == 1
     assert result[0].type == "text"
     assert re.search("天王洲アイル", result[0].text)
 
 
 @pytest.mark.asyncio  # type: ignore
-async def test_list_room() -> None:
+async def test_is_available_room() -> None:
     """
-    Test the list_room function.
+    Test the is_available_room function.
     """
-    result = await is_available_room(
-        "list_hotel",
+    result = await call_tool(
+        "is_available_room",
         {
             "region_id": "79",
             "hotel_id": "00244",

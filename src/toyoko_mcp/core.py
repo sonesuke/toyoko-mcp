@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict, List, Optional
 import mcp.types as types
 from mcp.server import Server
 from playwright.async_api import (
@@ -8,7 +8,7 @@ from playwright.async_api import (
     Browser,
     BrowserContext,
 )
-from tabulate import tabulate
+import json
 import logging
 import os
 from datetime import datetime
@@ -17,31 +17,47 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-app = Server("Toyoko server")
+app = Server(
+    name="Toyoko-Inn server",
+    version="0.1.0",
+    instructions="""
+This server provides tools to interact with the Toyoko-Inn website.
+    """,
+)
 
 # Keep Playwright as a global variable for efficient browser operations
 URLs = {"top": "https://www.toyoko-inn.com/corporation?lcl_id=ja"}
-playwright: Playwright | None = None
+playwright: Optional[Playwright] = None
 
 
 class Context:
-    browser: Browser | None = None
-    context: BrowserContext | None = None
-    main_page: Page | None = None
+    """
+    Context class to manage browser, context, and page.
+    """
+
+    browser: Optional[Browser] = None
+    context: Optional[BrowserContext] = None
+    main_page: Optional[Page] = None
 
     def __init__(self, browser: Browser, context: BrowserContext, main_page: Page):
+        """
+        Initialize the context with browser, context, and main page.
+        """
         self.browser = browser
         self.context = context
         self.main_page = main_page
 
     async def close(self) -> None:
+        """
+        Close the browser context and browser.
+        """
         if self.context is not None:
             await self.context.close()
         if self.browser is not None:
             await self.browser.close()
 
 
-context: Context | None = None
+context: Optional[Context] = None
 
 
 async def initialize_playwright() -> None:
@@ -114,6 +130,24 @@ async def list_tools() -> list[types.Tool]:
 
 
 @app.call_tool()  # type: ignore
+async def call_tool(
+    name: str, arguments: Dict[str, Any]
+) -> List[types.TextContent | types.ImageContent | types.EmbeddedResource]:
+    """
+    Call the appropriate tool function based on the 'name' argument.
+    """
+    if name == "login":
+        return await login(name, arguments)
+    elif name == "list_region":
+        return await list_region(name, arguments)
+    elif name == "list_hotel":
+        return await list_hotel(name, arguments)
+    elif name == "is_available_room":
+        return await is_available_room(name, arguments)
+    else:
+        raise ValueError(f"Tool '{name}' not found.")
+
+
 async def login(
     name: str, arguments: dict[str, str]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
@@ -174,6 +208,9 @@ async def login(
 
 
 async def get_select_options(page: Page, select_selector: str) -> list[dict[str, str]]:
+    """
+    Get all options from a select element.
+    """
     options = await page.query_selector_all(f"{select_selector} > option")
     options_list = []
     for option in options:
@@ -183,12 +220,11 @@ async def get_select_options(page: Page, select_selector: str) -> list[dict[str,
     return options_list
 
 
-@app.call_tool()  # type: ignore
 async def list_region(
     name: str, arguments: dict[str, int]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
-    Log in to the Toyoko Inn website.
+    List the regions available for booking in Toyoko Inn(東横イン).
     """
 
     global context
@@ -201,21 +237,22 @@ async def list_region(
     page = context.main_page
     # <option>要素を全て取得
     options = await get_select_options(page, "#sel_area")
-    values = [
-        (option["value"], option["text"]) for option in options if option["value"] != ""
+    result_dict = [
+        {"id": option["value"], "region": option["text"]}
+        for option in options
+        if option["value"] != ""
     ]
-    headers = ["id", "region"]
 
-    region_table = tabulate(values, headers=headers, tablefmt="github")
-    return [types.TextContent(type="text", text=region_table)]
+    return [
+        types.TextContent(type="text", text=json.dumps(result_dict, ensure_ascii=False))
+    ]
 
 
-@app.call_tool()  # type: ignore
 async def list_hotel(
     name: str, arguments: dict[str, Any]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
-    Log in to the Toyoko Inn website and list hotels.
+    List the hotels available for booking in Toyoko Inn(東横イン).
     """
 
     global context
@@ -238,21 +275,22 @@ async def list_hotel(
 
     await region.select_option(region_id)
     options = await get_select_options(page, "#sel_htl")
-    values = [
-        (option["value"], option["text"]) for option in options if option["value"] != ""
+    result_dict = [
+        {"id": option["value"], "hotel": option["text"]}
+        for option in options
+        if option["value"] != ""
     ]
-    headers = ["id", "hotel"]
 
-    hotel_table = tabulate(values, headers=headers, tablefmt="github")
-    return [types.TextContent(type="text", text=hotel_table)]
+    return [
+        types.TextContent(type="text", text=json.dumps(result_dict, ensure_ascii=False))
+    ]
 
 
-@app.call_tool()  # type: ignore
 async def is_available_room(
     name: str, arguments: dict[str, str]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
-    Log in to the Toyoko Inn website and list hotels.
+    List the rooms available for booking in Toyoko Inn(東横イン).
     """
 
     global context
@@ -300,14 +338,16 @@ async def is_available_room(
     if specified_date < datetime.now():
         year += 1
 
-    page.evaluate(f"""
+    await page.evaluate(
+        f"""
         () => {{
             const datepicker = document.querySelector('#datepicker');
             datepicker.value = '{year}-{month}-{day}';
             const event = new Event('change', {{ bubbles: true }});
             datepicker.dispatchEvent(event);
         }}
-    """)
+    """
+    )
 
     # Specify the room type and smoking preference
     await page.get_by_text("シングルルーム").click()
@@ -319,8 +359,6 @@ async def is_available_room(
 
     if reserve is None:
         return [types.TextContent(type="text", text="No rooms available")]
-
-    # await page.get_by_role("button", name="予約").click()
 
     return [types.TextContent(type="text", text="Rooms available")]
 
