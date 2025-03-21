@@ -24,4 +24,4 @@ goose:
     goose session
 
 inspector:
-    npx @modelcontextprotocol/inspector uv --directory . run toyoko_mcp_cli
+    npx @modelcontextprotocol/inspector -e PYTHONPATH=src -e CORPORATE_ID=$CORPORATE_ID -e USER_EMAIL=$USER_EMAIL -e USER_PASSWORD=$USER_PASSWORD uv --directory . run toyoko_mcp_cli
