@@ -1,3 +1,5 @@
+set dotenv-load
+
 install:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     pip install pre-commit
@@ -9,15 +11,17 @@ format:
     uv run ruff format
     uv run docformatter --in-place --config ./pyproject.toml src tests
 
-format_readme:
-    prettier --write README.md
-
 check: 
     pre-commit run -a
 
-run:
-    uv sync
-    env PYTHONPATH=src uv run toyoko_mcp_cli
+clean:
+    uv cache clean
+
+goose:
+    export LANGFUSE_SECRET_KEY=$LANGFUSE_SECRET_KEY
+    export LANGFUSE_PUBLIC_KEY=$LANGFUSE_PUBLIC_KEY
+    export LANGFUSE_HOST=$LANGFUSE_HOST
+    goose session
 
 inspector:
     npx @modelcontextprotocol/inspector uv --directory . run toyoko_mcp_cli
