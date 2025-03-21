@@ -13,7 +13,7 @@ import logging
 import os
 from datetime import datetime
 
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -132,6 +132,21 @@ async def list_tools() -> list[types.Tool]:
                 "required": ["region_id", "hotel_id", "month", "day", "nights"],
             },
         ),
+        types.Tool(
+            name="reserve_room",
+            description="reserve a room for booking in Toyoko Inn(東横イン)",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "region_id": {"type": "string", "description": "ID of the region"},
+                    "hotel_id": {"type": "string", "description": "ID of the hotel"},
+                    "month": {"type": "string", "description": "Month of the booking"},
+                    "day": {"type": "string", "description": "Day of the booking"},
+                    "nights": {"type": "integer", "description": "Number of nights"},
+                },
+                "required": ["region_id", "hotel_id", "month", "day", "nights"],
+            },
+        ),
     ]
 
 
@@ -150,6 +165,8 @@ async def call_tool(
         return await list_hotel(name, arguments)
     elif name == "is_available_room":
         return await is_available_room(name, arguments)
+    elif name == "reserve_room":
+        return await reserve_room(name, arguments)
     else:
         raise ValueError(f"Tool '{name}' not found.")
 
@@ -168,15 +185,27 @@ async def login(
     # Retrieve values from environment variables
     corporate_id = os.getenv("CORPORATE_ID")
     if not corporate_id:
-        raise ValueError("Environment variable 'CORPORATE_ID' is not set.")
+        return [
+            types.TextContent(
+                type="text", text="Environment variable 'CORPORATE_ID' is not set."
+            )
+        ]
 
     user_email = os.getenv("USER_EMAIL")
     if not user_email:
-        raise ValueError("Environment variable 'USER_EMAIL' is not set.")
+        return [
+            types.TextContent(
+                type="text", text="Environment variable 'USER_EMAIL' is not set."
+            )
+        ]
 
     user_password = os.getenv("USER_PASSWORD")
     if not user_password:
-        raise ValueError("Environment variable 'USER_PASSWORD' is not set.")
+        return [
+            types.TextContent(
+                type="text", text="Environment variable 'USER_PASSWORD' is not set."
+            )
+        ]
 
     # Open the top page and click the login link
     headless_mode = os.environ.get("TOYOKO_MCP_HEADLESS", "true").lower() == "true"
@@ -218,11 +247,16 @@ async def get_select_options(page: Page, select_selector: str) -> list[dict[str,
     Get all options from a select element.
     """
     options = await page.query_selector_all(f"{select_selector} > option")
+    logger.debug(
+        f"Found {len(options)} options({select_selector}) in the select element."
+    )
     options_list = []
     for option in options:
         value = await option.get_attribute("value")
         text = await option.inner_text()
-        options_list.append({"value": value.strip(), "text": text.strip()})
+        if text is not None and value is not None:
+            options_list.append({"value": value.strip(), "text": text.strip()})
+            logger.debug(f"Option: {text.strip()} ({value.strip()})")
     return options_list
 
 
@@ -238,10 +272,13 @@ async def list_region(
         await login("login", {})
 
     if context is None:
-        raise RuntimeError("Failed to log in.")
+        return [types.TextContent(type="text", text="Failed to log in.")]
 
     page = context.main_page
-    # <option>要素を全て取得
+    if page is None:
+        await context.close()
+        return [types.TextContent(type="text", text="Page not found.")]
+
     options = await get_select_options(page, "#sel_area")
     result_dict = [
         {"id": option["value"], "region": option["text"]}
@@ -266,20 +303,37 @@ async def list_hotel(
         await login("login", {})
 
     if context is None or context.main_page is None:
-        raise RuntimeError("Failed to log in or main page is not available.")
+        return [
+            types.TextContent(
+                type="text", text="Failed to log in or main page is not available."
+            )
+        ]
 
     region_id = arguments.get("region_id")
     if region_id is None:
-        raise ValueError("Argument 'region_id' is required.")
+        return [
+            types.TextContent(type="text", text="Argument 'region_id' is required.")
+        ]
 
     page = context.main_page
+    if page is None:
+        await context.close()
+        return [types.TextContent(type="text", text="Page not found.")]
 
     # Ensure the element with label "行先" exists
     region = page.get_by_label("行先")
     if region is None:
-        raise ValueError("Element with label '行先' not found.")
+        return [
+            types.TextContent(
+                type="text",
+                text="Failed to find element with label '行先'. Invalid Page.",
+            )
+        ]
 
     await region.select_option(region_id)
+    await page.wait_for_timeout(
+        1000
+    )  # Wait for the hotel list to be updated by JavaScript
     options = await get_select_options(page, "#sel_htl")
     result_dict = [
         {"id": option["value"], "hotel": option["text"]}
@@ -304,37 +358,52 @@ async def is_available_room(
         await login("login", {})
 
     if context is None or context.main_page is None:
-        raise RuntimeError("Failed to log in or main page is not available.")
+        return [
+            types.TextContent(
+                type="text", text="Failed to log in or main page is not available."
+            )
+        ]
+
     page = context.main_page
+    if page is None:
+        await context.close()
+        return [types.TextContent(type="text", text="Page not found.")]
 
     region_id = arguments.get("region_id")
     if region_id is None:
-        raise ValueError("Argument 'region_id' is required.")
+        return [
+            types.TextContent(type="text", text="Argument 'region_id' is required.")
+        ]
+
     region = page.get_by_label("行先")
     if region is None:
-        raise ValueError("Element with label '行先' not found.")
+        return [
+            types.TextContent(type="text", text="Element with label '行先' not found.")
+        ]
     await region.select_option(region_id)
 
     hotel_id = arguments.get("hotel_id")
     if hotel_id is None:
-        raise ValueError("Argument 'hotel_id' is required.")
+        return [types.TextContent(type="text", text="Argument 'hotel_id' is required.")]
     hotel = page.locator("#sel_htl")
     if hotel is None:
-        raise ValueError("Element with Id '#sel_htl' not found.")
+        return [
+            types.TextContent(type="text", text="Element with Id '#sel_htl' not found.")
+        ]
     await hotel.select_option(hotel_id)
     nights = arguments.get("nights")
     if nights is None:
-        raise ValueError("Argument 'nights' is required.")
+        return [types.TextContent(type="text", text="Argument 'nights' is required.")]
     await page.get_by_label("泊数").select_option(str(nights))
 
     month = arguments.get("month")
     if month is None:
-        raise ValueError("Argument 'month' is required.")
+        return [types.TextContent(type="text", text="Argument 'month' is required.")]
     month = str(month).zfill(2)
 
     day = arguments.get("day")
     if day is None:
-        raise ValueError("Argument 'day' is required.")
+        return [types.TextContent(type="text", text="Argument 'day' is required.")]
     day = str(day).zfill(2)
 
     year = datetime.now().year
@@ -361,12 +430,95 @@ async def is_available_room(
 
     await page.get_by_role("button", name="この条件でホテルを探す").click()
 
-    reserve = page.get_by_role("button", name="予約")
+    no_vacancy = await page.query_selector(".novacancy")
+    await page.wait_for_load_state("load")
+    await page.wait_for_timeout(1000)  # Wait for the status to be updated by JavaScript
+    logger.debug(f"no vacancy: {no_vacancy}")
 
-    if reserve is None:
+    if no_vacancy is None:
+        return [types.TextContent(type="text", text="Rooms available")]
+    else:
         return [types.TextContent(type="text", text="No rooms available")]
 
-    return [types.TextContent(type="text", text="Rooms available")]
+
+async def reserve_room(
+    name: str, arguments: dict[str, str]
+) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
+    """
+    List the rooms available for booking in Toyoko Inn(東横イン).
+    """
+
+    result = await is_available_room(name, arguments)
+    if result[0].type == "text" and result[0].text != "Rooms available":
+        return [types.TextContent(type="text", text="No rooms available")]
+
+    global context
+    if context is None:
+        return [types.TextContent(type="text", text="Failed to log in.")]
+
+    page = context.main_page
+    if page is None:
+        await context.close()
+        return [types.TextContent(type="text", text="Page not found.")]
+
+    buttons = await page.query_selector_all(".btn")
+    for button in buttons:
+        text = await button.inner_text()
+        if text == "予約":
+            await button.click()
+            break
+
+    await page.wait_for_load_state("load")
+    await page.wait_for_timeout(1000)  # Wait for the page to be updated by JavaScript
+
+    checkbox = page.locator("#sq_1_same_subscriber")
+    await checkbox.check()
+
+    check_in_time = page.locator("#sq_1_check_in_time")
+    await check_in_time.select_option("23:30:00")
+
+    room_type = page.locator("#sq_1_room_type")
+    options = await get_select_options(page, "#sq_1_room_type")
+    await room_type.select_option(options[1]["value"])
+
+    buttons = await page.query_selector_all(".btn")
+    for button in buttons:
+        text = await button.inner_text()
+        if text == "確認画面へ":
+            await button.click()
+            break
+
+    await page.wait_for_timeout(2000)
+    await page.wait_for_load_state("load")
+
+    await page.wait_for_selector("#agree")
+    agree = await page.query_selector("#agree")
+    if agree is None:
+        return [types.TextContent(type="text", text="Failed to reserve a room")]
+
+    await agree.click()
+
+    buttons = await page.query_selector_all(".btn")
+    for button in buttons:
+        text = await button.inner_text()
+        if text == "上記の内容で予約する":
+            await button.click()
+            break
+
+    await page.wait_for_load_state("load")
+    await page.wait_for_timeout(2000)
+
+    ps = await page.query_selector_all("p")
+    logger.debug(f"ps: {ps}")
+    for p in ps:
+        text = await p.inner_text()
+        logger.debug(f"p: {text}")
+        if text == "ご予約ありがとうございました。":
+            await context.close()
+            return [types.TextContent(type="text", text="Room reserved")]
+
+    await context.close()
+    return [types.TextContent(type="text", text="Failed to reserve a room")]
 
 
 async def save_dom(page: Page, path: str) -> None:

@@ -63,7 +63,7 @@ async def test_list_tools() -> None:
     Test the list_tools function.
     """
     result = await list_tools()
-    assert len(result) == 4
+    assert len(result) == 5
 
 
 @pytest.mark.asyncio  # type: ignore
