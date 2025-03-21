@@ -17,4 +17,7 @@ check:
 
 run:
     uv sync
-    uv run cli
+    env PYTHONPATH=src uv run toyoko_mcp_cli
+
+inspector:
+    npx @modelcontextprotocol/inspector uv --directory . run toyoko_mcp_cli
