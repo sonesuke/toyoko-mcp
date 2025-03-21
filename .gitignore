@@ -1,4 +1,8 @@
-.coverage
+.coverage*
 __pycache__
 *.pyc
 .env
+.aider.tags*
+.aider.chat*
+.aider.input*
+.aider*

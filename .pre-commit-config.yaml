@@ -2,7 +2,7 @@ repos:
   # formatter
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.11.0
+    rev: v0.11.1
     hooks:
       # Run the linter.
       - id: ruff
@@ -38,19 +38,14 @@ repos:
     hooks:
       - id: docformatter
         name: docformatter
-        args:
-          [
-            -r,
-            -i,
-            --pre-summary-newline,
-            --make-summary-multi-line,
-            --wrap-summaries,
-            "90",
-            --wrap-descriptions,
-            "90",
-            src,
-            tests,
-          ]
+        additional_dependencies: [tomli]
+        args: [
+          --in-place,
+          --config,
+          ./pyproject.toml,
+          src,
+          tests
+        ]
 
   - repo: local
     hooks:
