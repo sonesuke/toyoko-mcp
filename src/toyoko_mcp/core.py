@@ -172,7 +172,7 @@ async def call_tool(
 
 
 async def login(
-    name: str, arguments: dict[str, str]
+    name: str, arguments: Dict[str, Any]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
     Log in to the Toyoko Inn website.
@@ -242,7 +242,7 @@ async def login(
     return [types.TextContent(type="text", text="Login successfully")]
 
 
-async def get_select_options(page: Page, select_selector: str) -> list[dict[str, str]]:
+async def get_select_options(page: Page, select_selector: str) -> List[Dict[str, str]]:
     """
     Get all options from a select element.
     """
@@ -261,7 +261,7 @@ async def get_select_options(page: Page, select_selector: str) -> list[dict[str,
 
 
 async def list_region(
-    name: str, arguments: dict[str, int]
+    name: str, arguments: Dict[str, Any]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
     List the regions available for booking in Toyoko Inn(東横イン).
@@ -347,7 +347,7 @@ async def list_hotel(
 
 
 async def is_available_room(
-    name: str, arguments: dict[str, str]
+    name: str, arguments: Dict[str, Any]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
     List the rooms available for booking in Toyoko Inn(東横イン).
@@ -442,7 +442,7 @@ async def is_available_room(
 
 
 async def reserve_room(
-    name: str, arguments: dict[str, str]
+    name: str, arguments: Dict[str, Any]
 ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
     """
     List the rooms available for booking in Toyoko Inn(東横イン).
